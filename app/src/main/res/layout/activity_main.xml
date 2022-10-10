@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/LogoCircle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="100dp"
@@ -32,7 +32,7 @@
         app:srcCompat="@drawable/ic_baseline_music_note_100" />
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/volumeSeekBar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginHorizontal="20dp"
@@ -41,63 +41,51 @@
         android:progress="20"
         android:progressBackgroundTint="@color/white"
         android:progressTint="@color/colorAccent"
-        android:thumbTint="#FFC107"
+        android:thumbTint="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LogoCircle" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/songText"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="TextView"-->
-<!--        tools:layout_editor_absoluteX="172dp"-->
-<!--        tools:layout_editor_absoluteY="338dp" />-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/previous"-->
-<!--        android:layout_width="100dp"-->
-<!--        android:layout_height="30dp"-->
-<!--        app:srcCompat="@drawable/ic_baseline_skip_previous_24"-->
-<!--        tools:layout_editor_absoluteX="91dp"-->
-<!--        tools:layout_editor_absoluteY="523dp" />-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/play"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:srcCompat="@drawable/ic_baseline_play_arrow_24"-->
-<!--        tools:layout_editor_absoluteX="193dp"-->
-<!--        tools:layout_editor_absoluteY="518dp" />-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/next"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:srcCompat="@drawable/ic_baseline_skip_next_24"-->
-<!--        tools:layout_editor_absoluteX="295dp"-->
-<!--        tools:layout_editor_absoluteY="624dp" />-->
+    <TextView
+        android:id="@+id/songText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="91dp"
+        android:layout_marginEnd="170dp"
+        android:layout_marginBottom="70dp"
+        android:background="@color/purple_700"
+        android:padding="8dp"
+        android:text="TextView"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LogoCircle" />
 
     <ImageView
         android:id="@+id/previousBackground"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar"
         app:srcCompat="@drawable/circle" />
 
-
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/playBackground"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="50dp"
+        android:onClick="playAndPause"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="50dp"
-        app:layout_constraintEnd_toEndOf="@+id/nextBackground"
-        app:layout_constraintStart_toEndOf="@+id/previousBackground"
+        android:layout_marginEnd="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar"
         app:srcCompat="@drawable/circle" />
 
@@ -105,10 +93,45 @@
         android:id="@+id/nextBackground"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:onClick="nextTrack"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar"
         app:srcCompat="@drawable/circle" />
+
+    <ImageView
+        android:id="@+id/previous"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:onClick="previousTrack"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:srcCompat="@drawable/ic_baseline_skip_previous_24" />
+
+    <ImageView
+        android:id="@+id/play"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
+
+    <ImageView
+        android:id="@+id/next"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/volumeSeekBar"
+        app:srcCompat="@drawable/ic_baseline_skip_next_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
